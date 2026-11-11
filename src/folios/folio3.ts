@@ -133,12 +133,7 @@ function mount(ctx: FolioCtx): void {
         live.append(line(x, BENCH_Y - 5, x, BENCH_Y + 5, { class: 'faint' }));
         return;
       }
-      live.append(
-        path(
-          `M${x - 7} ${BENCH_Y - 1} q-3 -7 4 -8 q8 -3 10 4 q3 8 -5 9 q-6 2 -9 -5 z`,
-          { class: 'fill' },
-        ),
-      );
+      live.append(path(`M${x - 7} ${BENCH_Y - 1} q-3 -7 4 -8 q8 -3 10 4 q3 8 -5 9 q-6 2 -9 -5 z`, { class: 'fill' }));
       const n = queues[i]!;
       for (let j = 0; j < Math.min(n, STACK_MAX); j++) {
         live.append(s('rect', { x: x - 7, y: 178 - j * 6, width: 14, height: 5, class: 'tile' }));
@@ -202,7 +197,12 @@ function mount(ctx: FolioCtx): void {
         'ul',
         {},
         ...rows.map((e) =>
-          h('li', {}, h('span', {}, names(e.seals)), h('b', { class: e.r.ruined >= 8 ? 'err' : '' }, ui3.tallyRow(e.r))),
+          h(
+            'li',
+            {},
+            h('span', {}, names(e.seals)),
+            h('b', { class: e.r.ruined >= 8 ? 'err' : '' }, ui3.tallyRow(e.r)),
+          ),
         ),
       ),
     );

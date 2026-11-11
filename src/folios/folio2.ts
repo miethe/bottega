@@ -68,8 +68,16 @@ function mount(ctx: FolioCtx): void {
   ctx.stage.append(svg);
 
   // ----- levers
-  const modeA = h('button', { type: 'button', class: 'btn', 'data-testid': 'f2-mode-a', 'aria-pressed': 'true' }, ui2.modeA);
-  const modeB = h('button', { type: 'button', class: 'btn', 'data-testid': 'f2-mode-b', 'aria-pressed': 'false' }, ui2.modeB);
+  const modeA = h(
+    'button',
+    { type: 'button', class: 'btn', 'data-testid': 'f2-mode-a', 'aria-pressed': 'true' },
+    ui2.modeA,
+  );
+  const modeB = h(
+    'button',
+    { type: 'button', class: 'btn', 'data-testid': 'f2-mode-b', 'aria-pressed': 'false' },
+    ui2.modeB,
+  );
   const modes = h('div', { class: 'choices f2-modes', role: 'group', 'aria-label': ui2.modeLabel }, modeA, modeB);
 
   const boxes = new Map<Clause2, HTMLInputElement>();
@@ -117,7 +125,8 @@ function mount(ctx: FolioCtx): void {
   }
 
   function refreshHand(): void {
-    const canHand = mode === 'a' && phase === 'running' && state.working === 0 && state.handoffs < F2.tokens && !wantHandoff;
+    const canHand =
+      mode === 'a' && phase === 'running' && state.working === 0 && state.handoffs < F2.tokens && !wantHandoff;
     hand.disabled = !canHand;
   }
 
@@ -196,7 +205,9 @@ function mount(ctx: FolioCtx): void {
         live.append(smudge(x + 15, y + 22, 8, i * 50));
         const first = ui2.fault[p.faults[0] as Check2];
         const more = p.faults.length > 1 ? ` +${p.faults.length - 1}` : '';
-        live.append(s('text', { x: x + 15, y: y + 53, 'text-anchor': 'middle', class: 'hand err f2-fault' }, first + more));
+        live.append(
+          s('text', { x: x + 15, y: y + 53, 'text-anchor': 'middle', class: 'hand err f2-fault' }, first + more),
+        );
       } else if (mode === 'b' && p.tested.length > 0) {
         live.append(path(`M${x + 9} ${y + 24} l5 5 9 -12`));
       }
@@ -216,10 +227,18 @@ function mount(ctx: FolioCtx): void {
     setPhase('done');
     draw();
     if (mode === 'a') {
-      ctx.setResult(resultA2({ handoffs: sum.handoffs, finished: sum.finished, idleTicks: sum.idleTicks, ticks: F2.ticks }));
+      ctx.setResult(
+        resultA2({ handoffs: sum.handoffs, finished: sum.finished, idleTicks: sum.idleTicks, ticks: F2.ticks }),
+      );
     } else {
       ctx.setResult(
-        resultB2({ checkable: sum.checkable, moods: sum.moods, tokens: sum.tokens, finished: sum.finished, wrong: sum.wrong }),
+        resultB2({
+          checkable: sum.checkable,
+          moods: sum.moods,
+          tokens: sum.tokens,
+          finished: sum.finished,
+          wrong: sum.wrong,
+        }),
       );
     }
     if ((mode === 'b' && sum.wrong >= 1) || (ran.a && ran.b)) ctx.breakSeal();

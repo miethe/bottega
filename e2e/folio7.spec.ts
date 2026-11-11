@@ -2,7 +2,9 @@ import { expect, test } from '@playwright/test';
 
 const shots = process.env.BOTTEGA_SHOTS ?? 'shots';
 
-test('Folio VII: polishing to the last day ends on a shelf; opening the doors ends as Mark II', async ({ page }, info) => {
+test('Folio VII: polishing to the last day ends on a shelf; opening the doors ends as Mark II', async ({
+  page,
+}, info) => {
   await page.goto('./#folio-vii');
   const folio = page.locator('#folio-vii');
   const law = folio.getByTestId('law');

@@ -100,7 +100,13 @@ function mount(ctx: FolioCtx): void {
     'form',
     { class: 'doors-form', hidden: '', novalidate: '' },
     h('p', { class: 'form-title' }, ui7.formTitle),
-    h('div', { class: 'form-line' }, h('label', { for: 'f7-name' }, ui7.nameLabel), nameIn, h('span', { class: 'mark-one' }, ui7.markOne)),
+    h(
+      'div',
+      { class: 'form-line' },
+      h('label', { for: 'f7-name' }, ui7.nameLabel),
+      nameIn,
+      h('span', { class: 'mark-one' }, ui7.markOne),
+    ),
     h('fieldset', {}, h('legend', {}, ui7.icesLabel), chips, ownIn),
     need,
     h('div', { class: 'choices' }, doorsBtn, notYet),
@@ -153,7 +159,9 @@ function mount(ctx: FolioCtx): void {
     real.append(s('rect', { x: PX, y: PY, width: PW, height: PH, class: 'panel' }));
     imagined.append(...piece(() => [0, 0], 3));
     const g = gap(st) * STRAY;
-    real.append(...piece((i) => [scatter[i % scatter.length]![0] * g, scatter[i % scatter.length]![1] * g], st.hiddenFixed));
+    real.append(
+      ...piece((i) => [scatter[i % scatter.length]![0] * g, scatter[i % scatter.length]![1] * g], st.hiddenFixed),
+    );
     // fault one: the shadows fall two ways
     const fx = PX + 40;
     const fy = PY + 174;
@@ -171,9 +179,12 @@ function mount(ctx: FolioCtx): void {
     for (let k = st.hiddenFixed; k < st.hiddenShown; k++) {
       const [cx, cy] = rings[k]!;
       chalk.append(
-        path(`M${cx - 15} ${cy + 2} C${cx - 16} ${cy - 13} ${cx + 12} ${cy - 16} ${cx + 15} ${cy - 1} C${cx + 17} ${cy + 13} ${cx - 10} ${cy + 16} ${cx - 15} ${cy + 4}`, {
-          class: 'ring',
-        }),
+        path(
+          `M${cx - 15} ${cy + 2} C${cx - 16} ${cy - 13} ${cx + 12} ${cy - 16} ${cx + 15} ${cy - 1} C${cx + 17} ${cy + 13} ${cx - 10} ${cy + 16} ${cx - 15} ${cy + 4}`,
+          {
+            class: 'ring',
+          },
+        ),
       );
     }
   }
@@ -182,14 +193,15 @@ function mount(ctx: FolioCtx): void {
     const x0 = 256;
     const x1 = 346;
     const top = 74;
-    door.replaceChildren(
-      path(`M${x0} 290 L${x0} ${top} Q${(x0 + x1) / 2} ${top - 52} ${x1} ${top} L${x1} 290`),
-    );
+    door.replaceChildren(path(`M${x0} 290 L${x0} ${top} Q${(x0 + x1) / 2} ${top - 52} ${x1} ${top} L${x1} 290`));
     crowdG.replaceChildren();
     if (!st.released) {
       door.append(line((x0 + x1) / 2, top - 24, (x0 + x1) / 2, 290));
       for (let y = top + 14; y < 286; y += 26) door.append(line(x0 + 6, y, x1 - 6, y, { class: 'faint' }));
-      door.append(s('circle', { cx: (x0 + x1) / 2 - 8, cy: 188, r: 3 }), s('circle', { cx: (x0 + x1) / 2 + 8, cy: 188, r: 3 }));
+      door.append(
+        s('circle', { cx: (x0 + x1) / 2 - 8, cy: 188, r: 3 }),
+        s('circle', { cx: (x0 + x1) / 2 + 8, cy: 188, r: 3 }),
+      );
       crowdG.append(
         s('text', { x: (x0 + x1) / 2, y: top - 40, 'text-anchor': 'middle', class: 'hand big' }, String(st.passedBy)),
         s('text', { x: (x0 + x1) / 2, y: top - 56, 'text-anchor': 'middle', class: 'hand' }, ui7.passed),
@@ -273,9 +285,13 @@ function mount(ctx: FolioCtx): void {
 
   function status(): void {
     if (!st.released) {
-      ctx.setResult(shut7({ day: st.day, days: F7.days, inside: inside(st), strokes: st.strokes, passedBy: st.passedBy }));
+      ctx.setResult(
+        shut7({ day: st.day, days: F7.days, inside: inside(st), strokes: st.strokes, passedBy: st.passedBy }),
+      );
     } else {
-      ctx.setResult(open7({ day: st.day, days: F7.days, name: esc(name), mark: mark(st), worth: worth(st), viewers: st.viewers }));
+      ctx.setResult(
+        open7({ day: st.day, days: F7.days, name: esc(name), mark: mark(st), worth: worth(st), viewers: st.viewers }),
+      );
     }
   }
 
@@ -283,7 +299,9 @@ function mount(ctx: FolioCtx): void {
     setPhase('over');
     draw();
     if (st.released) {
-      ctx.setResult(endOpen7({ name: esc(name), mark: mark(st), worth: worth(st), viewers: st.viewers, ceiling: F7_CEILING }));
+      ctx.setResult(
+        endOpen7({ name: esc(name), mark: mark(st), worth: worth(st), viewers: st.viewers, ceiling: F7_CEILING }),
+      );
     } else {
       ctx.setResult(endShut7({ inside: inside(st), passedBy: st.passedBy }));
       ctx.breakSeal();

@@ -78,13 +78,12 @@ export function drawNight(run = 0, seed: number = F5.seed): F5Active[] {
   starts.sort((a, b) => a - b);
   const troubles: F5Active[] = [];
   starts.forEach((start, id) => {
-    const available = freeAt.flatMap((tick, spot) => tick <= start ? [spot] : []);
+    const available = freeAt.flatMap((tick, spot) => (tick <= start ? [spot] : []));
     if (!available.length) return;
     const spot = available[Math.floor(r() * available.length)]!;
     const chance = rng(subseed(nightSeed, id, 1));
-    const chanceAt = chance() < F5.chanceProbability
-      ? start + F5.chanceDelayMin + Math.floor(chance() * F5.chanceDelayRange)
-      : null;
+    const chanceAt =
+      chance() < F5.chanceProbability ? start + F5.chanceDelayMin + Math.floor(chance() * F5.chanceDelayRange) : null;
     troubles.push({ id, spot, start, chanceAt });
     freeAt[spot] = chanceAt ?? F5.ticks;
   });
@@ -96,7 +95,7 @@ function frame(s: F5Frame): F5Frame {
     tick: s.tick,
     rung: s.rung,
     mended: s.mended,
-    active: s.active.map((trouble) => trouble ? { ...trouble } : null),
+    active: s.active.map((trouble) => (trouble ? { ...trouble } : null)),
     sleepers: s.sleepers.map((sleeper) => ({ ...sleeper })),
     recentlyMended: [...s.recentlyMended],
   };
@@ -119,7 +118,10 @@ export function init(
     byCord: 0,
     active: Array(F5.spots).fill(null),
     sleepers: Array.from({ length: F5.sleepers }, () => ({
-      spot: null, troubleId: null, answersLeft: F5.answersPerSleeper, until: 0,
+      spot: null,
+      troubleId: null,
+      answersLeft: F5.answersPerSleeper,
+      until: 0,
     })),
     recentlyMended: [],
     troubles: drawNight(run, seed),

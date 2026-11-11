@@ -81,6 +81,8 @@ export function resultB2(r: {
         ? ' Every one passed the jig, and the jig checked everything that could go wrong.'
         : ' Nothing went out wrong. This time.';
   const mood =
-    r.moods > 0 ? ` The jig had nothing to measure for ${r.moods === 1 ? 'one of your sentences' : 'two of your sentences'}.` : '';
+    r.moods > 0
+      ? ` The jig had nothing to measure for ${r.moods === 1 ? 'one of your sentences' : 'two of your sentences'}.`
+      : '';
   return head + wrong + mood;
 }

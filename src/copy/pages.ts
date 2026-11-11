@@ -23,12 +23,17 @@ export const colophon = {
   markTitle: 'This notebook is Mark I. What still ices:',
   /** Must be TRUE at release. Edited last. */
   ices: [
-    'Only the first page is drawn. Six more are on the bench.',
+    'No person played these pages before they went out. Their only readers were models.',
+    'The numbers in every model were chosen to make its law visible. None was measured in a real shop.',
+    'The paper has no grain and the ink no wash. The textures were cut first.',
+    'The pages have been played in one browser engine, at one phone size and one desk size.',
+    'A screen reader gets the line of words under each drawing and not the drawing. Nobody has listened to a page read aloud.',
   ],
   disclaim: [
     'These are the author’s laws, and each was learned by breaking it. The models are toys: small enough to see through, which is their use and their limit. The owner of the workshop has not reviewed these pages and may disagree with any of them.',
   ],
-  rights: '© 2026 Nick Miethe. All rights reserved for now; a licence will be chosen. The typefaces are IM Fell English and EB Garamond, under the SIL Open Font License.',
+  rights:
+    '© 2026 Nick Miethe. All rights reserved for now; a licence will be chosen. The typefaces are IM Fell English and EB Garamond, under the SIL Open Font License.',
   source: 'The source, with the model behind every page',
   sourceUrl: 'https://github.com/miethe/bottega',
   privacy: 'No tracking, no cookies, no accounts. Your progress is kept in this browser and nowhere else.',

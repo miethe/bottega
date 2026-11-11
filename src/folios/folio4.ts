@@ -100,7 +100,10 @@ function mount(ctx: FolioCtx): void {
 
   function drawWall(): void {
     wall.replaceChildren();
-    wall.append(s('text', { x: 14, y: 152, class: 'hand' }, ui4.unveiled), line(14, 158, W - 14, 158, { class: 'faint' }));
+    wall.append(
+      s('text', { x: 14, y: 152, class: 'hand' }, ui4.unveiled),
+      line(14, 158, W - 14, 158, { class: 'faint' }),
+    );
     const revealed = phase === 'done';
     for (let i = 0; i < F4.panels; i++) {
       const p = state.panels[i];
@@ -115,7 +118,9 @@ function mount(ctx: FolioCtx): void {
       if (!revealed) wall.append(path(`M${x - 1} ${y + 4} q7 -6 14 0 t15 0`, { class: 'faint' }));
       if (revealed && p.caughtBy.length) wall.append(path(`M${x + 7} ${y + 18} l5 5 8 -11`));
       if (bad && p.state !== 'sound') {
-        wall.append(s('text', { x: x + 13.5, y: y + 23, 'text-anchor': 'middle', class: 'f4-letter' }, ui4.flaw[p.state][0]!));
+        wall.append(
+          s('text', { x: x + 13.5, y: y + 23, 'text-anchor': 'middle', class: 'f4-letter' }, ui4.flaw[p.state][0]!),
+        );
       }
     }
     if (revealed) {
@@ -148,7 +153,14 @@ function mount(ctx: FolioCtx): void {
             {},
             ...history
               .filter((e) => e.day === d)
-              .map((e) => h('li', {}, h('span', {}, ui4.short[e.r.who]), h('b', { class: e.r.shipped ? 'err' : '' }, String(e.r.shipped)))),
+              .map((e) =>
+                h(
+                  'li',
+                  {},
+                  h('span', {}, ui4.short[e.r.who]),
+                  h('b', { class: e.r.shipped ? 'err' : '' }, String(e.r.shipped)),
+                ),
+              ),
           ),
         ),
       ),

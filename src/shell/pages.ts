@@ -19,7 +19,11 @@ function frontispiece(): SVGSVGElement {
   const svg = s('svg', { viewBox: '0 0 300 190', class: 'drawing frontis', 'aria-hidden': 'true', focusable: 'false' });
   const g = ink();
   // floor
-  g.append(line(18, 168, 282, 168), line(40, 174, 120, 174, { class: 'faint' }), line(170, 176, 262, 176, { class: 'faint' }));
+  g.append(
+    line(18, 168, 282, 168),
+    line(40, 174, 120, 174, { class: 'faint' }),
+    line(170, 176, 262, 176, { class: 'faint' }),
+  );
   // big easel
   g.append(
     line(118, 40, 96, 168),
@@ -35,7 +39,12 @@ function frontispiece(): SVGSVGElement {
     s('circle', { cx: 150, cy: 80, r: 12, class: 'faint' }),
   );
   // stool
-  g.append(line(46, 136, 78, 136), line(50, 136, 44, 168), line(74, 136, 80, 168), line(48, 152, 76, 152, { class: 'faint' }));
+  g.append(
+    line(46, 136, 78, 136),
+    line(50, 136, 44, 168),
+    line(74, 136, 80, 168),
+    line(48, 152, 76, 152, { class: 'faint' }),
+  );
   // a jar on a shelf, a bell on a hook
   g.append(
     line(222, 84, 284, 84),
@@ -79,7 +88,9 @@ export function mountCover(mods: FolioModule[]): HTMLElement {
     frontispiece(),
     h('div', { class: 'intro' }, ...cover.intro.map((p) => h('p', {}, p))),
     h('nav', { class: 'toc', 'aria-label': cover.contents }, h('h2', {}, cover.contents), h('ol', {}, ...items)),
-    first ? h('p', { class: 'begin' }, h('a', { class: 'btn primary', href: `#folio-${first.id}` }, cover.begin)) : null,
+    first
+      ? h('p', { class: 'begin' }, h('a', { class: 'btn primary', href: `#folio-${first.id}` }, cover.begin))
+      : null,
     h('p', { class: 'small' }, cover.small),
   );
 

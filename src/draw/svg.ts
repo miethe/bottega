@@ -102,10 +102,7 @@ export function figure(
       line(sx - 5 * f, hip + 3, sx - 6 * f, hip + 16, { class: 'faint' }),
     );
   } else {
-    g.append(
-      line(sx - 1 * f, hip, sx - 5 * f, hip + 16),
-      line(sx - 1 * f, hip, sx + 5 * f, hip + 16),
-    );
+    g.append(line(sx - 1 * f, hip, sx - 5 * f, hip + 16), line(sx - 1 * f, hip, sx + 5 * f, hip + 16));
   }
   return g;
 }

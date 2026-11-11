@@ -84,7 +84,14 @@ export function opened7(r: { day: number; name: string; came: number; inside: nu
   return `Day ${r.day}. ${r.name}, Mark I. ${people(r.came)} came in. You thought it was ${pct(r.inside)}. <b class="err">From where they stand it is ${pct(r.worth)}.</b>`;
 }
 
-export function open7(r: { day: number; days: number; name: string; mark: number; worth: number; viewers: number }): string {
+export function open7(r: {
+  day: number;
+  days: number;
+  name: string;
+  mark: number;
+  worth: number;
+  viewers: number;
+}): string {
   return `Day ${Math.min(r.day, r.days)} of ${r.days}. ${r.name}, Mark ${ui7.romans[r.mark] ?? 'II'}, stands at ${pct(r.worth)}. ${people(r.viewers)} have seen it.`;
 }
 
@@ -107,5 +114,6 @@ export const said7 = {
     first
       ? `${who} ${what}. You have stood in front of it for ${days} ${days === 1 ? 'day' : 'days'}.`
       : `${who} ${what}.`,
-  mended: (what: string, first: boolean) => (first ? `You mended ${what}. That makes it Mark II.` : `You mended ${what}.`),
+  mended: (what: string, first: boolean) =>
+    first ? `You mended ${what}. That makes it Mark II.` : `You mended ${what}.`,
 };

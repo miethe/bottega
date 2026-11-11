@@ -22,18 +22,49 @@ function mount(ctx: FolioCtx): void {
   svg.append(art, live);
   ctx.stage.append(svg);
 
-  const bellRange = h('input', { id: 'f5-bells', type: 'range', min: 0, max: 16, step: 1, value: bells, 'data-testid': 'f5-bells' });
-  const cordRange = h('input', { id: 'f5-cords', type: 'range', min: 0, max: 8, step: 1, value: cords, 'data-testid': 'f5-cords' });
+  const bellRange = h('input', {
+    id: 'f5-bells',
+    type: 'range',
+    min: 0,
+    max: 16,
+    step: 1,
+    value: bells,
+    'data-testid': 'f5-bells',
+  });
+  const cordRange = h('input', {
+    id: 'f5-cords',
+    type: 'range',
+    min: 0,
+    max: 8,
+    step: 1,
+    value: cords,
+    'data-testid': 'f5-cords',
+  });
   const bellOut = h('output', { for: 'f5-bells', class: 'lever-value' }, String(bells));
   const cordOut = h('output', { for: 'f5-cords', class: 'lever-value' }, String(cords));
   const go = h('button', { type: 'button', class: 'btn primary', 'data-testid': 'f5-go' }, ui5.run);
-  ctx.levers.append(h('div', { class: 'lever' }, h('label', { for: 'f5-bells' }, ui5.bells), bellRange, bellOut), h('div', { class: 'lever' }, h('label', { for: 'f5-cords' }, ui5.cords), cordRange, cordOut), go);
+  ctx.levers.append(
+    h('div', { class: 'lever' }, h('label', { for: 'f5-bells' }, ui5.bells), bellRange, bellOut),
+    h('div', { class: 'lever' }, h('label', { for: 'f5-cords' }, ui5.cords), cordRange, cordOut),
+    go,
+  );
   const table = h('table', { class: 'f5-tally', hidden: '' });
   ctx.extras.append(table);
 
   function tally(): void {
     table.hidden = history.length === 0;
-    table.replaceChildren(h('thead', {}, h('tr', {}, ...[ui5.bells, ui5.cords, ui5.rung, ui5.mended].map(t => h('th', { scope: 'col' }, t)))), h('tbody', {}, ...history.map(r => h('tr', {}, ...[r.bells, r.cords, r.rung, r.mended].map(v => h('td', {}, String(v)))))));
+    table.replaceChildren(
+      h(
+        'thead',
+        {},
+        h('tr', {}, ...[ui5.bells, ui5.cords, ui5.rung, ui5.mended].map((t) => h('th', { scope: 'col' }, t))),
+      ),
+      h(
+        'tbody',
+        {},
+        ...history.map((r) => h('tr', {}, ...[r.bells, r.cords, r.rung, r.mended].map((v) => h('td', {}, String(v))))),
+      ),
+    );
   }
   function setPhase(p: typeof phase): void {
     phase = p;
@@ -44,10 +75,13 @@ function mount(ctx: FolioCtx): void {
   }
   function bell(x: number, y: number, ringing: boolean, tick: number): SVGGElement {
     const g = s('g', { transform: `translate(${x} ${y})` });
-    g.append(path('M-5 5 Q-4 2 -4 -2 Q-4 -7 0 -7 Q4 -7 4 -2 Q4 2 5 5 Z'), s('circle', { cx: 0, cy: 7, r: 1, class: 'fill' }));
+    g.append(
+      path('M-5 5 Q-4 2 -4 -2 Q-4 -7 0 -7 Q4 -7 4 -2 Q4 2 5 5 Z'),
+      s('circle', { cx: 0, cy: 7, r: 1, class: 'fill' }),
+    );
     if (ringing) {
       const d = tick % 2 ? 1 : 3;
-      g.append(path(`M${-7-d} -4 q-3 4 0 8 M${7+d} -4 q3 4 0 8`));
+      g.append(path(`M${-7 - d} -4 q-3 4 0 8 M${7 + d} -4 q3 4 0 8`));
     }
     return g;
   }
@@ -69,8 +103,17 @@ function mount(ctx: FolioCtx): void {
   function draw(): void {
     art.replaceChildren();
     live.replaceChildren();
-    art.append(path('M12 58 V253 H348 V58 M12 58 H348'), hatch(14, 59, 332, 10, 7), path('M179 43 a11 11 0 1 0 11 -18 a9 9 0 1 1 -11 18'));
-    art.append(s('text', { x: 13, y: 17, class: 'hand' }, ui5.rung), s('text', { x: 13, y: 46, class: 'f5-counter' }, String(state.rung)), s('text', { x: 347, y: 17, class: 'hand', 'text-anchor': 'end' }, ui5.mended), s('text', { x: 347, y: 46, class: 'f5-counter', 'text-anchor': 'end' }, String(state.mended)));
+    art.append(
+      path('M12 58 V253 H348 V58 M12 58 H348'),
+      hatch(14, 59, 332, 10, 7),
+      path('M179 43 a11 11 0 1 0 11 -18 a9 9 0 1 1 -11 18'),
+    );
+    art.append(
+      s('text', { x: 13, y: 17, class: 'hand' }, ui5.rung),
+      s('text', { x: 13, y: 46, class: 'f5-counter' }, String(state.rung)),
+      s('text', { x: 347, y: 17, class: 'hand', 'text-anchor': 'end' }, ui5.mended),
+      s('text', { x: 347, y: 46, class: 'f5-counter', 'text-anchor': 'end' }, String(state.mended)),
+    );
     for (let i = 0; i < 8; i++) {
       const [x, y] = pos(i);
       const active = state.active[i];
@@ -81,18 +124,23 @@ function mount(ctx: FolioCtx): void {
       if (active) {
         const age = state.tick - active.start;
         live.append(smudge(x + 8, y + 1, age < 10 ? 3 : age < 30 ? 5 : 7, i * 19));
-        if (phase === 'done') live.append(path(`M${x-15} ${y-16} l30 31 M${x+15} ${y-16} l-30 31`, { class: 'err' }));
-      } else if (state.recentlyMended.includes(i)) live.append(path(`M${x+9} ${y-2} l3 4 l7 -9`));
+        if (phase === 'done')
+          live.append(path(`M${x - 15} ${y - 16} l30 31 M${x + 15} ${y - 16} l-30 31`, { class: 'err' }));
+      } else if (state.recentlyMended.includes(i)) live.append(path(`M${x + 9} ${y - 2} l3 4 l7 -9`));
     }
     for (let i = 0; i < 3; i++) {
       const x = 55 + i * 122;
       const sleeper = state.sleepers[i]!;
-      art.append(line(x - 25, 282, x + 24, 282), s('text', { x, y: 300, class: 'hand', 'text-anchor': 'middle' }, ui5.sleepers[i]!));
-      if (sleeper.spot === null) art.append(s('circle', { cx: x - 17, cy: 274, r: 5 }), path(`M${x-11} 276 Q${x} 270 ${x+17} 277`));
+      art.append(
+        line(x - 25, 282, x + 24, 282),
+        s('text', { x, y: 300, class: 'hand', 'text-anchor': 'middle' }, ui5.sleepers[i]!),
+      );
+      if (sleeper.spot === null)
+        art.append(s('circle', { cx: x - 17, cy: 274, r: 5 }), path(`M${x - 11} 276 Q${x} 270 ${x + 17} 277`));
       for (let j = 0; j < sleeper.answersLeft; j++) art.append(line(x - 6 + j * 6, 308, x - 4 + j * 6, 313));
       if (sleeper.spot !== null) {
         const [sx, sy] = pos(sleeper.spot);
-        live.append(figure(sx + 19, sy - 10), path(`M${sx+30} ${sy+6} l10 0 l-2 9 l-6 0 Z`));
+        live.append(figure(sx + 19, sy - 10), path(`M${sx + 30} ${sy + 6} l10 0 l-2 9 l-6 0 Z`));
       }
     }
   }
@@ -130,7 +178,10 @@ function mount(ctx: FolioCtx): void {
     ctx.setResult(ui5.running(0, F5.ticks));
     timer = window.setInterval(tick, F5.tickMs);
   }
-  go.addEventListener('click', () => { if (phase === 'running') finish(); else start(); });
+  go.addEventListener('click', () => {
+    if (phase === 'running') finish();
+    else start();
+  });
   function update(): void {
     bells = Number(bellRange.value);
     cordRange.max = String(Math.min(bells, 8));

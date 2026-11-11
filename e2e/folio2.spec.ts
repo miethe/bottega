@@ -2,8 +2,10 @@ import { expect, test } from '@playwright/test';
 const shots = process.env.BOTTEGA_SHOTS ?? 'shots';
 test('Folio II: a whole commission needs checkable clauses', async ({ page }, info) => {
   await page.goto('./#folio-ii');
-  const folio = page.locator('#folio-ii'), law = folio.getByTestId('law');
-  const result = folio.getByTestId('result'), go = folio.getByTestId('f2-go');
+  const folio = page.locator('#folio-ii'),
+    law = folio.getByTestId('law');
+  const result = folio.getByTestId('result'),
+    go = folio.getByTestId('f2-go');
   await go.click();
   const hand = folio.getByTestId('f2-hand');
   await hand.click();
@@ -14,14 +16,16 @@ test('Folio II: a whole commission needs checkable clauses', async ({ page }, in
   await expect(result).toContainText('One step at a time');
   await expect(law).toHaveAttribute('data-revealed', 'false');
   await folio.getByTestId('f2-mode-b').click();
-  await go.click(); await go.click();
+  await go.click();
+  await go.click();
   await expect(result).toContainText('went out wrong');
   await folio.locator('.toy').screenshot({ path: `${shots}/${info.project.name}-folio-ii-wrong.png` });
   await expect(law).toHaveAttribute('data-revealed', 'true');
   await expect(law).toHaveAttribute('data-how', 'played');
   await expect(law).toContainText('Hand over the whole thing, with the test attached.');
   for (const id of ['figures', 'gold', 'frame', 'dry', 'care']) await folio.getByTestId(`f2-clause-${id}`).check();
-  await go.click(); await go.click();
+  await go.click();
+  await go.click();
   await expect(result).toContainText('passed the jig');
   await expect(result).toContainText('nothing to measure');
   await expect(folio.locator('.f2-nojig').last()).toBeVisible();

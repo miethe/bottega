@@ -3,7 +3,10 @@ import { expect, test } from '@playwright/test';
 
 const shots = process.env.BOTTEGA_SHOTS ?? 'shots';
 
-test('cover loads, nothing third-party is requested, nothing is stored but progress', async ({ page, baseURL }, info) => {
+test('cover loads, nothing third-party is requested, nothing is stored but progress', async ({
+  page,
+  baseURL,
+}, info) => {
   const origin = new URL(baseURL!).origin;
   const foreign: string[] = [];
   page.on('request', (req) => {

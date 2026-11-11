@@ -60,10 +60,7 @@ function mount(ctx: FolioCtx): void {
   });
   const out = h('output', { for: 'f1-hands', class: 'lever-value' }, String(hands));
   const go = h('button', { type: 'button', class: 'btn primary', 'data-testid': 'f1-go' }, ui1.open);
-  ctx.levers.append(
-    h('div', { class: 'lever' }, h('label', { for: 'f1-hands' }, ui1.hands), range, out),
-    go,
-  );
+  ctx.levers.append(h('div', { class: 'lever' }, h('label', { for: 'f1-hands' }, ui1.hands), range, out), go);
 
   // ----- chart of days
   const chart = s('svg', { viewBox: '0 0 360 120', class: 'drawing chart', role: 'img', 'aria-label': ui1.chartTitle });
@@ -187,7 +184,9 @@ function mount(ctx: FolioCtx): void {
     }
     history.forEach((r, i) => {
       const last = i === history.length - 1;
-      chart.append(s('circle', { cx: px(r.hands), cy: py(r.share), r: last ? 4 : 3, class: last ? 'dot last' : 'dot' }));
+      chart.append(
+        s('circle', { cx: px(r.hands), cy: py(r.share), r: last ? 4 : 3, class: last ? 'dot last' : 'dot' }),
+      );
     });
   }
 

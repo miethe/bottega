@@ -15,7 +15,10 @@
 #folio-vii .real path,
 #folio-vii .real circle,
 #folio-vii .real line {
-  transition: d 380ms ease-out, cx 380ms ease-out, cy 380ms ease-out;
+  transition:
+    d 380ms ease-out,
+    cx 380ms ease-out,
+    cy 380ms ease-out;
 }
 
 #folio-vii .chalk .ring {
