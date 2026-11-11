@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bottega: a notebook of seven workshop laws</title>
+    <meta
+      name="description"
+      content="A playable notebook. Seven small toys, each with one lever, each teaching one law of running a workshop, by letting you break it first."
+    />
+    <meta name="theme-color" content="#efe4cc" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-28 -28 56 56'%3E%3Cpath fill='%239b3421' d='M-21 -6C-23 -16-12 -24-2 -22C8 -25 20 -17 21 -7C25 2 20 14 11 19C3 25-10 23-16 17C-24 12-24 2-21 -6Z'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <!-- One filter for the whole notebook: it makes ruled lines look drawn. -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
+    <div id="notebook" class="notebook"></div>
+    <noscript>
+      <p style="max-width: 32rem; margin: 3rem auto; font: 1.2rem/1.5 serif">
+        Bottega is a notebook of small toys, and the toys need JavaScript. The source and the model behind each page are
+        at github.com/miethe/bottega.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "bottega",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A playable notebook: seven small toys, each teaching one law of running a workshop.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "e2e:live": "BOTTEGA_URL=https://nick.miethe.dev/bottega/ playwright test",
+    "verify": "npm run test && npm run build && npm run e2e"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@fontsource/eb-garamond": "^5.3.0",
+    "@fontsource/im-fell-english": "^5.3.0",
+    "@playwright/test": "^1.65.0",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  }
+}
