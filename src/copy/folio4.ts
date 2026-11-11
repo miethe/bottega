@@ -7,7 +7,7 @@ export const copy4: FolioCopy = {
     'An apprentice brings you a covered panel with a green ribbon on it. The ribbon means he says it is finished. Twenty of these come to you today, and you are busy.',
     'Choose who looks under the cloth before it goes to the patron. Everyone at your bench learned to draw from the same master, which is you.',
   ],
-  sealed: 'Sealed until the patron sends some back.',
+  sealed: 'Sealed until four flawed panels reach the patron.',
   law: 'A report is a claim. A second eye counts only if it could have disagreed.',
   model: [
     'Of every hundred panels, forty have bad hands (hands are hard), twelve bad perspective, twelve bad drapery, and thirty-six are sound. The ribbon is green on all of them. Each checker you try sees the same twenty panels, so the only thing that changes is who looked. Ask the same checker twice and a new day’s panels come.',
@@ -15,7 +15,7 @@ export const copy4: FolioCopy = {
   ],
   lies: [
     'Blind spots are not this tidy, and nobody carries exactly one. An outsider costs more than a bench-mate, takes longer, and is sometimes wrong with great confidence.',
-    'The toy keeps one thing: checkers who fail in the same place add up to little more than one checker.',
+    'The toy keeps one thing: checkers who fail in the same place add little to each other. Here three of them catch one bad hand in five, where one catches one in eight.',
   ],
 };
 
@@ -77,7 +77,7 @@ export function result4(r: {
     r.who === 'nobody'
       ? ' Every ribbon was green.'
       : r.who === 'bench3'
-        ? ' Three pairs of eyes, very nearly one opinion about hands.'
+        ? ' Three pairs of eyes, taught by one master.'
         : r.who === 'outsider'
           ? ' He has a blind spot too, and it is not yours.'
           : '';

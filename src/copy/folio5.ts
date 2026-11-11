@@ -5,7 +5,7 @@ export const copy5: FolioCopy = {
   title: 'Bells',
   setup: [
     'At night small disasters start in the shop: a candle near the drapes, the cat at the pigments, varnish skinning over in its pot. A bell is cheap. Hang one over a trouble spot and it rings for as long as there is trouble.',
-    'A cord is a promise. It runs from a bell to someone asleep who has agreed to get up. There are three such people, and each will get up three times in a night and no more.',
+    'A cord is a promise. It runs from a bell to someone asleep who has agreed to get up. There are three such people, and each will get up as many as three times in a night, and no more.',
   ],
   sealed: 'Sealed until a loud night.',
   law: 'A bell nobody hears is decoration. Before you hang it, name who gets up.',

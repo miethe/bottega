@@ -49,7 +49,7 @@ export function result6(r: {
       ? ''
       : r.cleaned === 0
         ? ' and found none stained'
-        : ` and cleaned the ${r.cleaned} you found stained`;
+        : ` and wiped off ${r.cleaned} ${r.cleaned === 1 ? 'stain' : 'stains'}`;
   if (r.stained === 0) {
     return r.mended
       ? `The jar is mended and you looked at ${looked}${cleaned}. The cart left clean.`
