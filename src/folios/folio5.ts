@@ -153,7 +153,7 @@ function mount(ctx: FolioCtx): void {
     history.push(result);
     if (history.length > 6) history.shift();
     ctx.setResult(result5(result));
-    if (result.rung >= 100 && result.mended <= 5) ctx.breakSeal();
+    if (result.rung > 0 && result.lost > 0) ctx.breakSeal();
     draw();
     tally();
   }
@@ -176,6 +176,8 @@ function mount(ctx: FolioCtx): void {
     setPhase('running');
     draw();
     ctx.setResult(ui5.running(0, F5.ticks));
+    // nothing to do but watch, so with reduced motion go straight to the end
+    if (ctx.reducedMotion()) return finish();
     timer = window.setInterval(tick, F5.tickMs);
   }
   go.addEventListener('click', () => {

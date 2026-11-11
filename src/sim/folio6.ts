@@ -5,6 +5,8 @@ export type Action = 'idle' | 'mend' | { look: number };
 export interface Panel {
   stained: boolean;
   looked: boolean;
+  /** It was stained when you pulled it out, and you cleaned it. */
+  found: boolean;
   stainedAfterLooked: boolean;
 }
 export interface F6State {
@@ -14,16 +16,23 @@ export interface F6State {
   mendedAtTick: number | null;
   busy: number;
   lastLook: number | null;
+  /** Stains you found and cleaned. */
+  cleaned: number;
   random: () => number;
 }
 export function init(run = 0, panels: number = F6.panels): F6State {
   const random = rng(subseed(F6.seed, run));
-  const shelf = Array.from({ length: panels }, () => ({ stained: false, looked: false, stainedAfterLooked: false }));
+  const shelf = Array.from({ length: panels }, () => ({
+    stained: false,
+    looked: false,
+    found: false,
+    stainedAfterLooked: false,
+  }));
   for (let i = 0; i < Math.min(F6.initialStains, panels); i++) {
     const clean = shelf.filter((p) => !p.stained);
     clean[Math.floor(random() * clean.length)]!.stained = true;
   }
-  return { tick: 0, panels: shelf, mended: false, mendedAtTick: null, busy: 0, lastLook: null, random };
+  return { tick: 0, panels: shelf, mended: false, mendedAtTick: null, busy: 0, lastLook: null, cleaned: 0, random };
 }
 export function step(state: F6State, action: Action): F6State {
   if (state.tick >= F6.ticks) return state;
@@ -32,6 +41,10 @@ export function step(state: F6State, action: Action): F6State {
   if (!state.busy && typeof action === 'object') {
     const p = state.panels[action.look];
     if (p) {
+      if (p.stained) {
+        p.found = true;
+        state.cleaned++;
+      }
       p.stained = false;
       p.looked = true;
       p.stainedAfterLooked = false;
@@ -60,6 +73,7 @@ export function summarize(state: F6State) {
     looked: state.panels.filter((p) => p.looked).length,
     total: state.panels.length,
     stained: state.panels.filter((p) => p.stained).length,
+    cleaned: state.cleaned,
     panels: state.panels.map((p) => ({ ...p })),
   };
 }

@@ -17,7 +17,7 @@ test('Folio V: bells ring; tied cords wake the people who mend', async ({ page }
   await go.click();
   await expect(go).toHaveText('To sunrise');
   await go.click();
-  await expect(result).toContainText('Rung 678. Mended 3.');
+  await expect(result).toContainText('Rung 678. Mended 3, by whoever happened to be up.');
   await expect(law).toHaveAttribute('data-revealed', 'true');
   await expect(law).toHaveAttribute('data-how', 'played');
   await expect(law).toContainText('A bell nobody hears is decoration. Before you hang it, name who gets up.');

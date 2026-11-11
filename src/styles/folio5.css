@@ -18,3 +18,20 @@
   padding: 0.1rem 0.45rem;
   border-bottom: 1px solid var(--paper-3);
 }
+
+#folio-v .levers {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#folio-v .lever {
+  flex: none;
+}
+
+#folio-v .lever label {
+  min-width: 6.4rem;
+}
+
+#folio-v .levers .btn {
+  align-self: flex-start;
+}

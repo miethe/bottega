@@ -45,4 +45,18 @@ describe('Folio VI', () => {
       expect(runNight(sweep, run)).toEqual(runNight(sweep, run));
     }
   });
+  it('what you clean is exactly what the jar had stained by the time it was mended', () => {
+    for (let run = 0; run < 100; run++) {
+      const s = init(run);
+      step(s, 'mend');
+      while (s.busy) step(s, 'idle');
+      const stainedAtMend = summarize(s).stained;
+      expect(stainedAtMend).toBe(F6.initialStains + F6.mendTicks);
+      for (let i = 0; i < F6.panels; i++) step(s, { look: i });
+      const r = summarize(s);
+      expect(r.cleaned).toBe(stainedAtMend);
+      expect(r.panels.filter((p) => p.found).length).toBe(stainedAtMend);
+      expect(r.stained).toBe(0);
+    }
+  });
 });

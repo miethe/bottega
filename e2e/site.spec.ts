@@ -49,3 +49,31 @@ test('no horizontal scroll', async ({ page }) => {
   const over = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(over).toBeLessThanOrEqual(0);
 });
+
+test('with reduced motion, a page that only plays itself goes straight to its end', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('./#folio-iii');
+  const folio = page.locator('#folio-iii');
+  await folio.getByTestId('f3-go').click();
+  await expect(folio).toHaveAttribute('data-phase', 'done');
+  await expect(folio.getByTestId('result')).toContainText('delivered ruined');
+  for (const [id, go] of [
+    ['iv', 'f4-go'],
+    ['v', 'f5-go'],
+  ]) {
+    const other = page.locator(`#folio-${id}`);
+    await other.getByTestId(go!).click();
+    await expect(other).toHaveAttribute('data-phase', 'done');
+  }
+});
+
+test('no serious accessibility violations after the pages have been played', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('./');
+  await expect(page.locator('html[data-ready="true"]')).toBeVisible();
+  for (const go of ['f3-go', 'f4-go', 'f5-go']) await page.getByTestId(go).click();
+  await page.getByTestId('f7-open').click();
+  const results = await new AxeBuilder({ page }).analyze();
+  const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+  expect(bad.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(' | ')}`)).toEqual([]);
+});

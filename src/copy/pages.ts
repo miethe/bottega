@@ -23,8 +23,9 @@ export const colophon = {
   markTitle: 'This notebook is Mark I. What still ices:',
   /** Must be TRUE at release. Edited last. */
   ices: [
-    'No person played these pages before they went out. Their only readers were models.',
-    'The numbers in every model were chosen to make its law visible. None was measured in a real shop.',
+    'No person played these pages before they went out. Their only readers were two models: one checked each toy against its words, and one was shown pictures and asked what each page taught.',
+    'Each toy can only show the law it was built to show. Its numbers were chosen to make that law visible, and none was measured in a real shop.',
+    'A seal breaks when you break the law, not when you have understood it.',
     'The paper has no grain and the ink no wash. The textures were cut first.',
     'The pages have been played in one browser engine, at one phone size and one desk size.',
     'A screen reader gets the line of words under each drawing and not the drawing. Nobody has listened to a page read aloud.',

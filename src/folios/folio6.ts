@@ -1,3 +1,4 @@
+import '../styles/folio6.css';
 import { copy6, result6, ui6 } from '../copy/folio6';
 import { figure, h, hatch, ink, line, path, s, smudge, stageSvg } from '../draw/svg';
 import { F6, init, step, summarize, type Action } from '../sim/folio6';
@@ -53,6 +54,12 @@ function mount(ctx: FolioCtx): void {
         s('rect', { x, y, width: 17, height: 35, class: 'tile' }),
         hatch(x + 2, y + 2, 13, 31, 9, { class: 'faint' }),
       );
+      if (p.found) {
+        // wiped: what you found here and cleaned
+        const wiped = smudge(x + 8.5, y + 24, 4.5, i * 37);
+        wiped.setAttribute('class', 'smudge f6-wiped');
+        art.append(wiped);
+      }
       if (p.looked) art.append(path(`M${x + 4} ${y + 15} l3 3 l6 -7`));
       const b = buttons[i]!;
       b.setAttribute('aria-label', p.looked ? ui6.panelSeen(i + 1) : ui6.panel(i + 1));
@@ -65,12 +72,13 @@ function mount(ctx: FolioCtx): void {
       line(20, 306, 338, 306),
       s('circle', { cx: 20 + (318 * state.tick) / F6.ticks, cy: 306, r: 5 }),
       s('circle', { cx: 338, cy: 306, r: 9 }),
+      s('text', { x: 326, y: 298, 'text-anchor': 'end', class: 'hand' }, ui6.dawn),
     );
     if (phase === 'done') {
       art.append(
         s('rect', { x: 25, y: 238, width: 310, height: 43, class: 'tile' }),
         s('circle', { cx: 65, cy: 287, r: 7 }),
-        s('circle', { cx: 295, cy: 287, r: 7 }),
+        s('circle', { cx: 272, cy: 287, r: 7 }),
       );
       state.panels.forEach((p, i) =>
         art.append(
@@ -100,7 +108,7 @@ function mount(ctx: FolioCtx): void {
     setPhase('done');
     const result = summarize(state);
     ctx.setResult(result6(result));
-    if (result.mended && result.stained >= 1) ctx.breakSeal();
+    if (result.stained >= 1) ctx.breakSeal();
     draw();
   }
   function tick(): void {

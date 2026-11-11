@@ -5,13 +5,13 @@ export const copy5: FolioCopy = {
   title: 'Bells',
   setup: [
     'At night small disasters start in the shop: a candle near the drapes, the cat at the pigments, varnish skinning over in its pot. A bell is cheap. Hang one over a trouble spot and it rings for as long as there is trouble.',
-    'A cord is dearer. It runs from a bell to someone asleep who has agreed to get up, and there are three such people.',
+    'A cord is a promise. It runs from a bell to someone asleep who has agreed to get up. There are three such people, and each will get up three times in a night and no more.',
   ],
   sealed: 'Sealed until a loud night.',
   law: 'A bell nobody hears is decoration. Before you hang it, name who gets up.',
   model: [
     'The night is 120 ticks and the shop has eight trouble spots. About ten troubles start, and each lasts until someone mends it or the sun comes up. A bell over a spot rings once for every tick the trouble lasts; a second bell over the same spot rings just as often and mends just as little.',
-    'A cord ties one bell to one sleeper. Three sleepers will each get up three times a night, and a mend takes four ticks. A bell with no cord wakes nobody. Now and then somebody happens to be up anyway. That is the whole of the base rate.',
+    'A cord ties one bell to one sleeper. Three sleepers will each get up at most three times a night, and a mend takes four ticks. A bell with no cord wakes nobody. Now and then somebody happens to be up anyway. That is the whole of the base rate.',
   ],
   lies: [
     'Real alarms are not all noise: sometimes hanging the bell is the first honest look at how much is going wrong. And some trouble does burn out by itself.',
@@ -49,5 +49,6 @@ export function result5(r: { bells: number; cords: number; rung: number; mended:
     r.lost > 0
       ? ` By sunrise <b class="err">${r.lost} ${r.lost === 1 ? 'thing was' : 'things were'} past saving</b>.`
       : ' By sunrise nothing was lost.';
-  return `${b}. Rung ${r.rung}. Mended ${r.mended}.${lost}`;
+  const who = r.cords === 0 && r.mended > 0 ? ', by whoever happened to be up' : '';
+  return `${b}. Rung ${r.rung}. Mended ${r.mended}${who}.${lost}`;
 }

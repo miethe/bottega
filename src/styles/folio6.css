@@ -1,0 +1,6 @@
+/* Folio VI. The leaking jar. */
+
+/* a stain you found and wiped: still visible, no longer wet */
+#folio-vi .drawing .f6-wiped {
+  opacity: 0.3;
+}

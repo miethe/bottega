@@ -49,6 +49,7 @@ export const ui2 = {
     frame: 'too wide',
     dry: 'still wet',
   },
+  faults: (n: number) => `${n} faults`,
   noJig: 'no jig fits this',
   jigLabel: 'the jig',
   handoffsLeft: (n: number) => `${plural(n, 'handoff', 'handoffs')} left`,
@@ -78,7 +79,7 @@ export function resultB2(r: {
     r.wrong > 0
       ? ` <b class="err">${r.wrong} went out wrong</b>, in ways you never wrote down.`
       : r.checkable === 4
-        ? ' Every one passed the jig, and the jig checked everything that could go wrong.'
+        ? ' Every one passed the jig, and all four things that go wrong in this toy were on it.'
         : ' Nothing went out wrong. This time.';
   const mood =
     r.moods > 0

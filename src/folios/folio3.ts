@@ -241,6 +241,8 @@ function mount(ctx: FolioCtx): void {
     setPhase('running');
     draw();
     ctx.setResult(ui3.day(0, F3.days));
+    // nothing to do but watch, so with reduced motion go straight to the end
+    if (ctx.reducedMotion()) return finish();
     timer = window.setInterval(tick, TICK_MS);
   });
 

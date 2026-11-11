@@ -93,3 +93,17 @@
 #folio-iv .f4-tally b.err {
   color: var(--sanguine);
 }
+
+/* The one green thing in the notebook is the claim that it is finished. */
+#folio-iv .f4-ribbon {
+  fill: var(--verdigris);
+  stroke: var(--verdigris);
+}
+
+#folio-iv .drawing text.f4-green {
+  fill: var(--verdigris);
+}
+
+#folio-iv .drawing text.f4-letter {
+  font-style: normal;
+}

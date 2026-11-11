@@ -73,10 +73,10 @@ function mount(ctx: FolioCtx): void {
       figure(24, 34, { reach: [22, 6] }),
       panel(50, 36, 42, 56),
       path('M46 40 q12 -9 24 -2 t26 -1 l2 22 q-4 4 -6 -2 M46 40 l-2 20 q4 5 6 -2'),
-      path('M71 56 l-9 -6 1 12 8 -4 8 4 1 -12 z', { class: 'fill' }),
+      path('M71 56 l-9 -6 1 12 8 -4 8 4 1 -12 z', { class: 'f4-ribbon' }),
       line(52, 92, 48, 112),
       line(90, 92, 94, 112),
-      s('text', { x: 71, y: 126, 'text-anchor': 'middle', class: 'hand' }, ui4.ribbon),
+      s('text', { x: 71, y: 126, 'text-anchor': 'middle', class: 'hand f4-green' }, ui4.ribbon),
     );
     // the bench
     const last = phase === 'running' ? state.panels[state.panels.length - 1] : undefined;
@@ -130,7 +130,10 @@ function mount(ctx: FolioCtx): void {
         `${ui4.flaw.perspective} ${sum.perspective}`,
         `${ui4.flaw.drapery} ${sum.drapery}`,
       ];
-      wall.append(s('text', { x: 14, y: 272, class: sum.shipped ? 'hand err' : 'hand' }, parts.join('  ·  ')));
+      wall.append(
+        s('text', { x: 14, y: 272, class: sum.shipped ? 'hand err' : 'hand' }, parts.join('  ·  ')),
+        s('text', { x: 14, y: 289, class: 'hand' }, ui4.key),
+      );
     }
   }
 
@@ -201,6 +204,8 @@ function mount(ctx: FolioCtx): void {
     setPhase('running');
     draw();
     ctx.setResult(ui4.running(0, F4.panels));
+    // nothing to do but watch, so with reduced motion go straight to the end
+    if (ctx.reducedMotion()) return finish();
     timer = window.setInterval(tick, TICK_MS);
   });
 

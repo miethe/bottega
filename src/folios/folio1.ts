@@ -172,14 +172,14 @@ function mount(ctx: FolioCtx): void {
       s('text', { x: x0 - 6, y: y1 + 4, 'text-anchor': 'end', class: 'hand' }, '70%'),
       s('text', { x: x0 - 6, y: y0 + 2, 'text-anchor': 'end', class: 'hand' }, '0'),
       s('text', { x: px(1), y: y0 + 16, 'text-anchor': 'middle', class: 'hand' }, '1'),
-      s('text', { x: px(12) - 46, y: y0 + 16, 'text-anchor': 'middle', class: 'hand' }, ''),
+      s('text', { x: x0 + 6, y: y1 + 4, class: 'hand' }, ui1.chartY),
     );
     if (ctx.lawRevealed()) {
       let d = '';
       for (let n = 1; n <= F1.maxHands; n++) d += `${n === 1 ? 'M' : 'L'}${px(n)} ${py(expectedShare(n))} `;
       chart.append(
         path(d, { class: 'curve err' }),
-        s('text', { x: x1, y: py(expectedShare(12)) - 8, 'text-anchor': 'end', class: 'hand err' }, ui1.chartCurve),
+        s('text', { x: x1, y: py(expectedShare(12)) + 15, 'text-anchor': 'end', class: 'hand err' }, ui1.chartCurve),
       );
     }
     history.forEach((r, i) => {
@@ -209,7 +209,7 @@ function mount(ctx: FolioCtx): void {
     if (history.length > 24) history.shift();
     ctx.setResult(result1(sum));
     setPhase('done');
-    if (sum.hands >= 3 && sum.ruined >= 3) ctx.breakSeal();
+    if (sum.ruined >= 3) ctx.breakSeal();
     drawChart();
   }
 

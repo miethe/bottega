@@ -107,7 +107,7 @@ function mount(ctx: FolioCtx): void {
       nameIn,
       h('span', { class: 'mark-one' }, ui7.markOne),
     ),
-    h('fieldset', {}, h('legend', {}, ui7.icesLabel), chips, ownIn),
+    h('fieldset', {}, h('legend', {}, ui7.icesLabel), h('p', { class: 'ices-hint' }, ui7.icesHint), chips, ownIn),
     need,
     h('div', { class: 'choices' }, doorsBtn, notYet),
   );
@@ -375,8 +375,7 @@ function mount(ctx: FolioCtx): void {
     step(st, 'open');
     const came = st.crowd[day - 1] ?? 0;
     saidList.replaceChildren();
-    picked.forEach((item, k) => say(said7.agreed(Math.max(2, Math.min(came, 5 - k)), item)));
-    if (own) say(said7.own(own));
+    for (const item of own ? [...picked, own] : picked) say(said7.posted(item));
     say(said7.found(ui7.strangers[0]!, ui7.finds[0]!, day, true), true);
     ctx.breakSeal();
     if (over(st)) return end();

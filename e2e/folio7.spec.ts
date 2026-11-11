@@ -48,7 +48,7 @@ test('Folio VII: polishing to the last day ends on a shelf; opening the doors en
   // begin again and never open
   await folio.getByTestId('f7-again').click();
   await folio.getByTestId('f7-skip').click();
-  await expect(result).toContainText('It was found long afterwards and much admired.');
+  await expect(result).toContainText('It was found long afterwards and much admired, too late to mend.');
   await folio.screenshot({ path: `${shots}/${info.project.name}-folio-vii-shelf.png` });
 });
 

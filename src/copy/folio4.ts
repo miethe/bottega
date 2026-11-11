@@ -10,12 +10,12 @@ export const copy4: FolioCopy = {
   sealed: 'Sealed until the patron sends some back.',
   law: 'A report is a claim. A second eye counts only if it could have disagreed.',
   model: [
-    'Of every hundred panels, forty have bad hands (hands are hard), twelve bad perspective, twelve bad drapery, and thirty-six are sound. The ribbon is green on all of them. Each checker you try sees the same twenty panels, so the only thing that changes is who looked.',
+    'Of every hundred panels, forty have bad hands (hands are hard), twelve bad perspective, twelve bad drapery, and thirty-six are sound. The ribbon is green on all of them. Each checker you try sees the same twenty panels, so the only thing that changes is who looked. Ask the same checker twice and a new day’s panels come.',
     'Anyone from your bench catches nine in ten of the perspective and drapery faults and almost none of the hands: about one in eight, and mostly the same ones, because they all learned hands from you. Three of them together catch about one hand in five. The journeyman from the other workshop catches nine hands in ten and misses nine in ten of the perspective faults. That is his bench’s blind spot, and yours covers it.',
   ],
   lies: [
     'Blind spots are not this tidy, and nobody carries exactly one. An outsider costs more than a bench-mate, takes longer, and is sometimes wrong with great confidence.',
-    'The toy keeps one thing: checkers who fail in the same place add up to one checker.',
+    'The toy keeps one thing: checkers who fail in the same place add up to little more than one checker.',
   ],
 };
 
@@ -36,6 +36,7 @@ export const ui4 = {
   ribbon: 'finished',
   flaw: { hands: 'hands', perspective: 'perspective', drapery: 'drapery' },
   unveiled: 'At the patron’s house, unveiled',
+  key: 'ticked: sent back and mended first',
   /** Heading of the tally: every checker you try on a day sees the same panels. */
   sameTwenty: 'Same twenty panels: went out flawed',
   short: {
@@ -76,7 +77,7 @@ export function result4(r: {
     r.who === 'nobody'
       ? ' Every ribbon was green.'
       : r.who === 'bench3'
-        ? ' Three pairs of eyes, one opinion about hands.'
+        ? ' Three pairs of eyes, very nearly one opinion about hands.'
         : r.who === 'outsider'
           ? ' He has a blind spot too, and it is not yours.'
           : '';

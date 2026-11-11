@@ -11,7 +11,9 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "e2e:live": "BOTTEGA_URL=https://nick.miethe.dev/bottega/ playwright test",
-    "verify": "npm run test && npm run build && npm run e2e"
+    "verify": "npm run test && npm run build && npm run e2e",
+    "single": "npm run build && node scripts/single-file.mjs",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",

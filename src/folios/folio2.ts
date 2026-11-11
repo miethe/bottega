@@ -203,11 +203,8 @@ function mount(ctx: FolioCtx): void {
       live.append(path(arch(x, y, 30, 40), { class: 'panel' }));
       if (bad) {
         live.append(smudge(x + 15, y + 22, 8, i * 50));
-        const first = ui2.fault[p.faults[0] as Check2];
-        const more = p.faults.length > 1 ? ` +${p.faults.length - 1}` : '';
-        live.append(
-          s('text', { x: x + 15, y: y + 53, 'text-anchor': 'middle', class: 'hand err f2-fault' }, first + more),
-        );
+        const what = p.faults.length > 1 ? ui2.faults(p.faults.length) : ui2.fault[p.faults[0] as Check2];
+        live.append(s('text', { x: x + 15, y: y + 53, 'text-anchor': 'middle', class: 'hand err f2-fault' }, what));
       } else if (mode === 'b' && p.tested.length > 0) {
         live.append(path(`M${x + 9} ${y + 24} l5 5 9 -12`));
       }
@@ -241,7 +238,7 @@ function mount(ctx: FolioCtx): void {
         }),
       );
     }
-    if ((mode === 'b' && sum.wrong >= 1) || (ran.a && ran.b)) ctx.breakSeal();
+    if (ran.a && ran.b) ctx.breakSeal();
   }
 
   function tick(): void {

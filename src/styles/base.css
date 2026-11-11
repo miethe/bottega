@@ -9,6 +9,8 @@
   --ink-2: #57463a;
   --ink-3: #8a775f;
   --sanguine: #9b3421;
+  /* one more colour, used once: the ribbon in Folio IV */
+  --verdigris: #3f6a52;
   --sanguine-soft: rgba(155, 52, 33, 0.16);
   --display: 'IM Fell English', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --body: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;

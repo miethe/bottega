@@ -13,11 +13,11 @@ export const copy1: FolioCopy = {
   lawNote: 'Everything after this page is what you do instead.',
   model: [
     'Each apprentice lays one stroke per tick: six strokes to a panel, sixty ticks to a day. An unwatched stroke goes wrong with probability 0.11, so a panel nobody watched is ruined about half the time (1 − 0.89⁶ ≈ 0.50). A watched stroke never goes wrong.',
-    'Your eye is on one easel per tick, so it covers one stroke in N wherever you put it. Stare at one easel all day and the ruined share is (1 − 1/N) × 0.50. Dart about and it is a little worse, because a panel needs all six of its strokes clean and you have only watched some of each.',
+    'Your eye is on one easel per tick, so it covers one stroke in N wherever you put it. Stare at one easel all day and the ruined share comes out, on average, at (1 − 1/N) × 0.50. Move your eye only when a panel is finished and it is the same. Dart about inside panels and it is a little worse, because a panel needs all six of its strokes clean and you have only watched some of each.',
   ],
   lies: [
     'Real apprentices learn. A master’s glance carries further than one easel, and being watched changes how people work, not always for the better. Nobody ruins half of what they touch and stays employed.',
-    'The toy keeps only the arithmetic: one eye, divided by the number of hands.',
+    'The toy keeps only the arithmetic: one eye, divided by the number of hands. With one apprentice, watching works. The law starts at the second easel.',
   ],
 };
 
@@ -32,8 +32,8 @@ export const ui1 = {
   running: (tick: number, total: number) => `Working. ${Math.max(0, total - tick)} strokes of daylight left.`,
   chartTitle: 'Your days so far',
   chartX: 'hands',
-  chartY: 'ruined',
-  chartCurve: 'the best one eye can do',
+  chartY: 'of the day’s panels ruined',
+  chartCurve: 'what to expect, staring at one easel',
 };
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
@@ -48,8 +48,8 @@ export function result1(r: F1Summary): string {
   const good = r.finished - r.ruined;
   const eye =
     r.eyeMoves === 0
-      ? `Your eye stayed put and saved ${r.saved}.`
-      : `You moved your eye ${plural(r.eyeMoves, 'time', 'times')}. It saved ${r.saved}.`;
+      ? `Your eye stayed put and saved ${plural(r.saved, 'panel', 'panels')}.`
+      : `You moved your eye ${plural(r.eyeMoves, 'time', 'times')}. It saved ${plural(r.saved, 'panel', 'panels')}.`;
   const patron = good >= 40 ? '' : ` Only ${good} are fit to deliver.`;
   return `${made}, <b class="err">${r.ruined} ruined</b> (${pct}%). ${eye}${patron}`;
 }

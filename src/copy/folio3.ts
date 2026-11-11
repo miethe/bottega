@@ -10,8 +10,8 @@ export const copy3: FolioCopy = {
   sealed: 'Sealed until a month goes badly.',
   law: 'Spend the gate where the mistake cannot be taken back.',
   model: [
-    'Four pieces start each day for thirty days. Each hop adds a flaw fifteen times in a hundred. A seal holds every piece until you have looked at it; you look at ten a day, oldest first. With ten or fewer waiting you catch ninety-five flaws in a hundred. Past ten your eye tires in proportion, down to one in five.',
-    'A flaw caught before the gold is put right for a day’s delay. A leaf of gold is wasted, once for each piece, when it is laid over a flaw, when it is stripped and laid again after a later catch, or when it leaves on a ruined piece. A flaw nobody catches is delivered. Every month you try has the same flaws in the same pieces, so the only thing that changes is where the seals are.',
+    'Four pieces start each day for thirty days. Each of the first four hops adds a flaw fifteen times in a hundred; delivery adds none. A seal holds every piece until you have looked at it; you look at ten a day, oldest first. With ten or fewer waiting you catch ninety-five flaws in a hundred. Past ten your eye tires in proportion, down to one in five.',
+    'A flaw caught before the gold is put right for a day’s delay. A leaf of gold is wasted, once for each piece, when it is laid over a flaw, when it is stripped and laid again after a later catch, or when it leaves on a ruined piece. A flaw nobody catches is delivered. Each way of sealing you try gets the same month, flaw for flaw, so the only thing that changes is where the seals are. Run the same seals twice and a new month begins.',
   ],
   lies: [
     'Mistakes do not sort themselves into two tidy kinds, and part of the craft is noticing that a step you took for a sketch was gold. A tired inspector is not this predictable.',
@@ -41,7 +41,7 @@ export const ui3 = {
   idle: 'A careful shop seals every hop. Run the month and see.',
   /** Live counts under the bench. */
   counts: ['delivered sound', 'delivered ruined', 'gold wasted', 'waiting'],
-  more: (n: number) => `and ${n} more`,
+  more: (n: number) => `+${n}`,
   tallyTitle: 'The same month, sealed differently',
   noSeals: 'no seals',
   everyHop: 'a seal on every hop',

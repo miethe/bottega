@@ -80,6 +80,15 @@
   margin-bottom: 0.7rem;
 }
 
+#folio-vii .form-line label {
+  flex-basis: 100%;
+}
+
+#folio-vii .form-line input {
+  flex: 1 1 8rem;
+  min-width: 0;
+}
+
 #folio-vii .form-line label,
 #folio-vii legend {
   font-variant-caps: all-small-caps;
@@ -199,4 +208,11 @@
 
 #folio-vii [hidden] {
   display: none !important;
+}
+
+#folio-vii .ices-hint {
+  font-style: italic;
+  color: var(--ink-2);
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
 }
