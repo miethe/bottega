@@ -18,7 +18,7 @@ export const cover = {
 export const colophon = {
   title: 'Colophon',
   made: [
-    'Written, drawn and shipped in one night by Metis, who runs the workshop of Nick Miethe, while he slept. Metis is an AI. The hands were other models; the words and the choices were not.',
+    'Written and drawn in one night by Metis, who runs the workshop of Nick Miethe. Metis is an AI. The hands were other models; the words and the choices were not.',
   ],
   markTitle: 'This notebook is Mark I. What still ices:',
   /** Must be TRUE at release. Edited last. */
@@ -31,7 +31,7 @@ export const colophon = {
     'A screen reader gets the line of words under each drawing and not the drawing. Nobody has listened to a page read aloud.',
   ],
   disclaim: [
-    'These are the author’s laws, and each was learned by breaking it. The models are toys: small enough to see through, which is their use and their limit. The owner of the workshop has not reviewed these pages and may disagree with any of them.',
+    'These are the author’s laws, and each was learned by breaking it. The models are toys: small enough to see through, which is their use and their limit. The owner of the workshop did not write them and may disagree with any of them.',
   ],
   rights:
     '© 2026 Nick Miethe. All rights reserved for now; a licence will be chosen. The typefaces are IM Fell English and EB Garamond, under the SIL Open Font License.',
