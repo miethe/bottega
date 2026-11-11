@@ -1,0 +1,199 @@
+/* Folio VII. Mark I. */
+
+#folio-vii .imagined {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  filter: none;
+  opacity: 0.85;
+}
+
+#folio-vii .real {
+  stroke-width: 1.6;
+}
+
+#folio-vii .real path,
+#folio-vii .real circle,
+#folio-vii .real line {
+  transition: d 380ms ease-out, cx 380ms ease-out, cy 380ms ease-out;
+}
+
+#folio-vii .chalk .ring {
+  fill: none;
+  stroke: var(--sanguine);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+#folio-vii .gauge .mk {
+  fill: var(--ink);
+  stroke: none;
+}
+
+#folio-vii .gauge .mk.err {
+  fill: var(--sanguine);
+}
+
+#folio-vii .gauge .drop {
+  stroke: var(--sanguine);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 3;
+}
+
+#folio-vii .drawing text.big {
+  font-size: 22px;
+  font-style: normal;
+  fill: var(--ink);
+}
+
+#folio-vii .levers {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#folio-vii .levers > .linklike {
+  align-self: flex-start;
+}
+
+#folio-vii .doors-form {
+  border: 1.5px solid var(--ink);
+  border-radius: 4px 6px 5px 3px / 5px 3px 6px 4px;
+  background: rgba(255, 251, 238, 0.55);
+  padding: 0.8rem 0.9rem 0.6rem;
+}
+
+#folio-vii .form-title {
+  font-family: var(--display);
+  font-style: italic;
+  margin: 0 0 0.5rem;
+}
+
+#folio-vii .form-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+#folio-vii .form-line label,
+#folio-vii legend {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--ink-2);
+  font-size: 1rem;
+}
+
+#folio-vii .mark-one {
+  font-family: var(--display);
+  font-size: 1.2rem;
+}
+
+#folio-vii input[type='text'] {
+  font: inherit;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--ink);
+  border-radius: 0;
+  padding: 0.2rem 0.1rem;
+  min-height: 2.6rem;
+  flex: 1 1 9rem;
+  min-width: 0;
+  width: 100%;
+}
+
+#folio-vii input[type='text']::placeholder {
+  color: var(--ink-2);
+  font-style: italic;
+  opacity: 1;
+}
+
+#folio-vii fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  min-width: 0;
+}
+
+#folio-vii legend {
+  padding: 0;
+  margin-bottom: 0.3rem;
+}
+
+#folio-vii .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.4rem;
+}
+
+#folio-vii .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 255px 18px 225px 18px / 18px 225px 18px 255px;
+  padding: 0.35rem 0.85rem 0.4rem 0.6rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+  font-family: var(--display);
+  background: rgba(255, 251, 238, 0.6);
+}
+
+#folio-vii .chip input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--ink);
+  margin: 0;
+}
+
+#folio-vii .chip:has(input:checked) {
+  background: var(--paper-3);
+}
+
+#folio-vii .chip:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+#folio-vii .need {
+  min-height: 1.4em;
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+}
+
+#folio-vii .said-box {
+  margin: 0.2rem 0 0.4rem;
+  border-left: 1.5px solid var(--ink-3);
+  padding-left: 0.8rem;
+}
+
+#folio-vii .said-title {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.12em;
+  color: var(--ink-2);
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+}
+
+#folio-vii .said {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+#folio-vii .said li {
+  margin-bottom: 0.35rem;
+}
+
+#folio-vii [hidden] {
+  display: none !important;
+}

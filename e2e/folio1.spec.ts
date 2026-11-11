@@ -30,7 +30,7 @@ test('Folio I: one watched apprentice ruins nothing; many hands break the seal',
   await expect(law).toHaveAttribute('data-how', 'played');
   await expect(law).toContainText('You cannot watch your way to quality.');
   await folio.scrollIntoViewIfNeeded();
-  await page.screenshot({ path: `${shots}/${info.project.name}-folio-i.png`, fullPage: false });
+  await folio.screenshot({ path: `${shots}/${info.project.name}-folio-i.png` });
 
   // and it stays revealed
   await page.reload();
