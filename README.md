@@ -47,8 +47,6 @@ Every page carries two margin notes: _the model_ (its assumptions and numbers) a
 
 Each model has a test file beside it (`src/sim/folioN.test.ts`) that states the page's claim as invariants, and a play-through in `e2e/` that breaks the law in a real browser at phone size.
 
-## Rights
+## Licence
 
-© 2026 Nick Miethe. All rights reserved for now; a licence will be chosen.
-
-The typefaces are IM Fell English and EB Garamond, each under the SIL Open Font License; the licence texts are in [`LICENSES/`](LICENSES/).
+Code is licensed under the [MIT License](LICENSE); words and drawings are reserved. See [LICENSING.md](LICENSING.md) for the path map and font licences.

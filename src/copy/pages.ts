@@ -34,7 +34,7 @@ export const colophon = {
     'These are the author’s laws, and each was learned by breaking it. The models are toys: small enough to see through, which is their use and their limit. The owner of the workshop did not write them and may disagree with any of them.',
   ],
   rights:
-    '© 2026 Nick Miethe. All rights reserved for now; a licence will be chosen. The typefaces are IM Fell English and EB Garamond, under the SIL Open Font License.',
+    '© 2026 Nick Miethe. Code is MIT licensed; words and drawings are all rights reserved. The typefaces are IM Fell English and EB Garamond, under the SIL Open Font License.',
   source: 'The source, with the model behind every page',
   sourceUrl: 'https://github.com/miethe/bottega',
   privacy: 'No tracking, no cookies, no accounts. Your progress is kept in this browser and nowhere else.',
