@@ -1,0 +1,24 @@
+import { expect, test } from '@playwright/test';
+const shots = process.env.BOTTEGA_SHOTS ?? 'shots';
+test('Folio IV: independent eyes catch a shared blind spot', async ({ page }, info) => {
+  await page.goto('./#folio-iv');
+  const folio = page.locator('#folio-iv');
+  const go = folio.getByTestId('f4-go');
+  const result = folio.getByTestId('result');
+  const law = folio.getByTestId('law');
+  await go.click(); await go.click();
+  await expect(result).toContainText('went to the patron flawed');
+  await expect(law).toHaveAttribute('data-revealed', 'true');
+  await expect(law).toHaveAttribute('data-how', 'played');
+  await expect(law).toContainText('A report is a claim. A second eye counts only if it could have disagreed.');
+  await folio.getByTestId('f4-who-bench3').check();
+  await go.click(); await go.click();
+  const bench = Number((await result.innerText()).match(/(\d+) went to the patron flawed/)?.[1]);
+  await folio.getByTestId('f4-who-outsider').check();
+  await go.click(); await go.click();
+  const outsider = Number((await result.innerText()).match(/(\d+) went to the patron flawed/)?.[1]);
+  expect(bench).toBeGreaterThan(outsider);
+  await expect(folio.locator('.f4-tally')).toContainText('three of yours');
+  await folio.scrollIntoViewIfNeeded();
+  await folio.screenshot({ path: `${shots}/${info.project.name}-folio-iv.png` });
+});
