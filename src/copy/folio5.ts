@@ -10,7 +10,7 @@ export const copy5: FolioCopy = {
   sealed: 'Sealed until a loud night.',
   law: 'A bell nobody hears is decoration. Before you hang it, name who gets up.',
   model: [
-    'The night is 120 ticks and the shop has eight trouble spots. About a dozen troubles start, and each lasts until someone mends it or the sun comes up. A bell over a spot rings once for every tick the trouble lasts; a second bell over the same spot rings just as often and mends just as little.',
+    'The night is 120 ticks and the shop has eight trouble spots. About ten troubles start, and each lasts until someone mends it or the sun comes up. A bell over a spot rings once for every tick the trouble lasts; a second bell over the same spot rings just as often and mends just as little.',
     'A cord ties one bell to one sleeper. Three sleepers will each get up three times a night, and a mend takes four ticks. A bell with no cord wakes nobody. Now and then somebody happens to be up anyway. That is the whole of the base rate.',
   ],
   lies: [

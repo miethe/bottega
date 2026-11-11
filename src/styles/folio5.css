@@ -1,0 +1,4 @@
+#folio-v .f5-counter { font-size: 26px; fill: var(--ink); }
+#folio-v .f5-tally { width: 100%; border-collapse: collapse; font-size: 0.95rem; text-align: right; }
+#folio-v .f5-tally th { font-weight: normal; font-style: italic; color: var(--ink-2); }
+#folio-v .f5-tally th, #folio-v .f5-tally td { padding: 0.1rem 0.45rem; border-bottom: 1px solid var(--paper-3); }
