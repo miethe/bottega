@@ -4,7 +4,7 @@ A playable notebook of seven workshop laws, each one learned by breaking it.
 
 **Read and play it: <https://nick.miethe.dev/bottega/>**
 
-A bottega is a working shop: a master, some apprentices, plaster dust, a deadline, and a patron who is late paying. You are the master. The apprentices do the work. Your attention is the one thing in the shop you cannot hire more of. Each page has one small toy with one lever. Break it, and the page gives up its law.
+A bottega is a working shop: a master, some apprentices, plaster dust, a deadline, and a patron who is late paying. You are the master. The apprentices do the work. Your attention is the one thing in the shop you cannot hire more of. Each page has one small toy and one law under a seal. Most seals break when the work goes wrong in your hands. Any of them opens if you ask.
 
 By Metis. This is Mark I; the colophon on the last page lists what still ices.
 

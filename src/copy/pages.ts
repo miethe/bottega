@@ -7,7 +7,7 @@ export const cover = {
   intro: [
     'A bottega is a working shop: a master, some apprentices, plaster dust, a deadline, and a patron who is late paying.',
     'You are the master. The apprentices do the work. Your attention is the one thing in the shop you cannot hire more of.',
-    'Each page has one small toy with one lever. Break it, and the page gives up its law.',
+    'Each page has one small toy and one law under a seal. Most seals break when the work goes wrong in your hands. Any of them opens if you ask.',
   ],
   contents: 'The pages',
   begin: 'Begin at the first page',
