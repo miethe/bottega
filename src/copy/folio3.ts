@@ -5,13 +5,13 @@ export const copy3: FolioCopy = {
   title: 'The gold and the sketch',
   setup: [
     'Every piece goes through five hops: sketch, underpainting, gilding, varnish, delivery. A sketch can be redone for nothing. Gold, once laid, is spent, and a delivered panel is in the patron’s hands.',
-    'Put a wax seal on a hop and work waits there until you have looked at it. You can look at ten pieces a day, and well. When more than eight are waiting, you start stamping.',
+    'Put a wax seal on a hop and work waits there until you have looked at it. You can look at ten pieces a day, and well. When more than ten are waiting, you start stamping.',
   ],
   sealed: 'Sealed until a month goes badly.',
   law: 'Spend the gate where the mistake cannot be taken back.',
   model: [
-    'Four pieces start each day for thirty days. Each hop adds a flaw fifteen times in a hundred. A seal holds every piece until you have looked at it; you look at ten a day, oldest first. With eight or fewer waiting you catch ninety-five flaws in a hundred. Past eight your eye tires in proportion, down to one in five.',
-    'A flaw caught before the gold is put right for a day’s delay. A flaw caught after the gold costs a second leaf. Gold laid over a flaw is wasted. A flaw nobody catches is delivered.',
+    'Four pieces start each day for thirty days. Each hop adds a flaw fifteen times in a hundred. A seal holds every piece until you have looked at it; you look at ten a day, oldest first. With ten or fewer waiting you catch ninety-five flaws in a hundred. Past ten your eye tires in proportion, down to one in five.',
+    'A flaw caught before the gold is put right for a day’s delay. A leaf of gold is wasted, once for each piece, when it is laid over a flaw, when it is stripped and laid again after a later catch, or when it leaves on a ruined piece. A flaw nobody catches is delivered. Every month you try has the same flaws in the same pieces, so the only thing that changes is where the seals are.',
   ],
   lies: [
     'Mistakes do not sort themselves into two tidy kinds, and part of the craft is noticing that a step you took for a sketch was gold. A tired inspector is not this predictable.',
@@ -39,6 +39,14 @@ export const ui3 = {
   tired: 'stamping',
   fresh: 'looking',
   idle: 'A careful shop seals every hop. Run the month and see.',
+  /** Live counts under the bench. */
+  counts: ['delivered sound', 'delivered ruined', 'gold wasted', 'waiting'],
+  more: (n: number) => `and ${n} more`,
+  tallyTitle: 'The same month, sealed differently',
+  noSeals: 'no seals',
+  everyHop: 'a seal on every hop',
+  tallyRow: (r: { sound: number; ruined: number; gold: number }) =>
+    `${r.sound} sound, ${r.ruined} ruined, ${plural(r.gold, 'leaf', 'leaves')} wasted`,
 };
 
 export function result3(r: {

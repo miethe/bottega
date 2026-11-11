@@ -1,0 +1,86 @@
+/* Folio III. The gold and the sketch. */
+
+#folio-iii .levers {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.7rem;
+}
+
+#folio-iii .f3-sheet {
+  border: 1.5px solid var(--ink);
+  border-radius: 4px 6px 5px 3px / 5px 3px 6px 4px;
+  background: rgba(255, 251, 238, 0.55);
+  padding: 0.5rem 0.8rem 0.4rem;
+  margin: 0;
+  min-width: 0;
+}
+
+#folio-iii .f3-sheet legend {
+  font-family: var(--display);
+  font-style: italic;
+  padding: 0 0.3rem;
+}
+
+#folio-iii .f3-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+#folio-iii .f3-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+  font-family: var(--display);
+  line-height: 1.2;
+}
+
+#folio-iii .f3-chip input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--ink);
+  margin: 0;
+  flex: none;
+}
+
+#folio-iii .drawing text.f3-count {
+  font-size: 17px;
+  font-style: normal;
+  fill: var(--ink);
+}
+
+#folio-iii .drawing text.f3-count.err {
+  fill: var(--sanguine);
+}
+
+#folio-iii .f3-tally-title {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--ink-2);
+  margin: 0 0 0.2rem;
+}
+
+#folio-iii .f3-tally ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#folio-iii .f3-tally li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 1rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--ink-3);
+}
+
+#folio-iii .f3-tally b {
+  font-weight: 400;
+}
+
+#folio-iii .f3-tally b.err {
+  color: var(--sanguine);
+}
