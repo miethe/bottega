@@ -7,7 +7,7 @@ import type { FolioModule } from './types';
 export const PLAN: { id: string; numeral: string; title: string }[] = [
   { id: 'i', numeral: 'I', title: 'One pair of eyes' },
   { id: 'ii', numeral: 'II', title: 'The whole commission' },
-  { id: 'iii', numeral: 'III', title: 'The kiln and the sketch' },
+  { id: 'iii', numeral: 'III', title: 'The gold and the sketch' },
   { id: 'iv', numeral: 'IV', title: 'He says it is finished' },
   { id: 'v', numeral: 'V', title: 'Bells' },
   { id: 'vi', numeral: 'VI', title: 'The leaking jar' },
